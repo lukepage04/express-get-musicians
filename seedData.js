@@ -8,7 +8,7 @@ const seedMusician = [
       instrument: 'Voice',
     },
     {
-      name: 'Jimmy Hendrix',
+      name: 'Jimi Hendrix',
       instrument: 'Guitar'
     }
   ]

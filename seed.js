@@ -1,11 +1,10 @@
 const {Musician} = require("./Musician")
-const seedData = require("./seedData");
-const {sequelize} = require("./db")
+const {sequelize} = require("./db");
+const seedMusician = require("./seedData");
 
 const syncSeed = async () => {
     await sequelize.sync({force: true});
-    console.log("The seed data: " + seedData[0]);
-    await Musician.create(seedData[0])
+    seedMusician.map(musician => Musician.create(musician));
 }
 
 syncSeed()
