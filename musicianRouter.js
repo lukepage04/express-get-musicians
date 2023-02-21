@@ -15,15 +15,20 @@ musicianRouter.post('/musicians', async (req, res) => {
 });
 
 // READ
-musicianRouter.get('/musicians', async (req, res) => {
+musicianRouter.get('/musicians/:id', async (req, res) => {
   try {
-    const musicians = await Musician.findAll();
-    res.json(musicians);
+    const musician = await Musician.findByPk(req.params.id);
+    if (musician) {
+      res.json(musician);
+    } else {
+      res.status(404).send('Not Found');
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 // UPDATE
 musicianRouter.put('/musicians/:id', async (req, res) => {
